@@ -1,0 +1,1522 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* General: ____________________________________________________________________ */
+
+body {
+    background: linear-gradient(120deg, #28282B, 
+                                        #36454F);
+}
+
+svg {
+    background: transparent;
+}
+
+.standings_content {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 45px;
+}
+
+/* Navbar: _____________________________________________________________________ */
+
+ul {
+    background: linear-gradient(120deg, #F8F8F8,
+                                        #71797b);
+    border: transparent;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    list-style-type: none;
+    margin: 15px;
+    width: 200px;
+
+    transition: box-shadow 0.25s ease,
+                transform 0.25s ease;
+}
+
+ul:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transform: scale(1.05);
+}
+
+li a {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+.navbar_division {
+    padding-top: 20px;
+}
+
+.navbar_conference {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navbar_league {
+    padding-bottom: 20px;
+}
+
+.navbar_logo {
+    width: 50px;
+    height: 50px auto;
+}
+
+/* li a.active {
+  background-color: #04AA6D;
+  color: white;
+} */
+
+/* Info: _______________________________________________________________________ */
+
+.division_name {
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(24px, 3vw, 30px);
+    padding-top: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+}
+
+.conference_name {
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(24px, 3vw, 30px);
+    padding-top: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+}
+
+.standings_list {
+    display: block;
+}
+
+.standings_entry {
+    align-items: center;
+    background-color: white !important;
+    border: transparent;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    display: flex;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 700;
+    height: 25px;
+    justify-content: space-between;
+    margin: 15px auto;
+    max-width: 750px;
+    overflow: hidden;
+    padding: 18px 18px 18px 20px;
+    position: relative;
+    width: 102%;
+
+    transition: background-color 0.4s ease-in-out,
+                background-size 0.4s ease-in-out,
+                box-shadow 0.25s ease, 
+                color 0.4s ease-in-out,
+                text-shadow 0.25s ease,
+                transform 0.25s ease;
+}
+
+.standings_entry:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transform: scale(1.1);
+}
+
+.standings_entry_left {
+    align-items: center;
+    display: flex;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_entry_name {
+    white-space: nowrap;
+}
+
+.standings_entry_logo {
+    align-items: center;
+    display: flex;
+    height: clamp(60px, 12vw, 110px);
+    justify-content: center;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(60px, 12vw, 110px);
+}
+
+.standings_entry_logo img {
+    width: auto;
+    height: 110px;
+}
+
+.standings_entry .standings_entry_logo img {
+    transition: filter 0.25s ease;
+}
+
+.standings_entry:hover .standings_entry_logo img {
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+.standings_number {
+    font-weight: 900;
+    margin-right: 20px;
+}
+
+.standings_data {
+    display: grid;
+    font-weight: normal;
+    gap: 10px;
+    grid-template-columns: 40px 40px 40px 40px 40px 180px;
+    text-align: center;
+}
+
+.standings_data_right {
+    font-weight: 700;
+    text-align: right;
+}
+
+/* Teams: ______________________________________________________________________ */
+
+.standings_ANA {
+    background: linear-gradient(to right, #D16118 0px,
+                                          #AE2B02 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_ANA:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_ANA .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_ANA:hover .standings_data {
+   color: white;
+}
+
+.standings_ANA .standings_entry_logo {
+    background: url("/static/img/ANA_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-45%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_ANA .standings_entry_logo img {
+    display: none;
+}
+
+.standings_ANA:hover .standings_entry_logo {
+    background: url("/static/img/ANA_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_BOS {
+    background: linear-gradient(to right, #FDCD21 0px,
+                                          #E28F11 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+}
+
+.standings_BOS:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_BOS .standings_entry_logo {
+    background: url("/static/img/BOS_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_BOS .standings_entry_logo img {
+    display: none;
+}
+
+.standings_BOS:hover .standings_entry_logo {
+    background: url("/static/img/BOS_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_BUF {
+    background: linear-gradient(to right, #0140AE 0px,
+                                          #001F56 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_BUF:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_BUF .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_BUF:hover .standings_data {
+   color: white;
+}
+
+.standings_BUF .standings_entry_logo {
+    background: url("/static/img/BUF_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_BUF .standings_entry_logo img {
+    display: none;
+}
+
+.standings_BUF:hover .standings_entry_logo {
+    background: url("/static/img/BUF_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_CAR {
+    background: linear-gradient(to right, #D7023F 0px,
+                                          #A3011F 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_CAR:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_CAR .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_CAR:hover .standings_data {
+   color: white;
+}
+
+.standings_CAR .standings_entry_logo {
+    background: url("/static/img/CAR_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_CAR .standings_entry_logo img {
+    display: none;
+}
+
+.standings_CAR:hover .standings_entry_logo {
+    background: url("/static/img/CAR_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_CBJ {
+    background: linear-gradient(to right, #0A295C 0px,
+                                          #031329 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_CBJ:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_CBJ .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_CBJ:hover .standings_data {
+   color: white;
+}
+
+.standings_CBJ .standings_entry_logo {
+    background: url("/static/img/CBJ_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_CBJ .standings_entry_logo img {
+    display: none;
+}
+
+.standings_CBJ:hover .standings_entry_logo {
+    background: url("/static/img/CBJ_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_CGY {
+    background: linear-gradient(to right, #DC1543 0px,
+                                          #A20A1E 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_CGY:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_CGY .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_CGY:hover .standings_data {
+   color: white;
+}
+
+.standings_CGY .standings_entry_logo {
+    background: url("/static/img/CGY_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_CGY .standings_entry_logo img {
+    display: none;
+}
+
+.standings_CGY:hover .standings_entry_logo {
+    background: url("/static/img/CGY_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_CHI {
+    background: linear-gradient(to right, #DD1734 0px,
+                                          #AA0B19 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_CHI:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_CHI .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_CHI:hover .standings_data {
+   color: white;
+}
+
+.standings_CHI .standings_entry_logo {
+    background: url("/static/img/CHI_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_CHI .standings_entry_logo img {
+    display: none;
+}
+
+.standings_CHI:hover .standings_entry_logo {
+    background: url("/static/img/CHI_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_COL {
+    background: linear-gradient(to right, #AF3346 0px,
+                                          #561720 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_COL:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_COL .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_COL:hover .standings_data {
+   color: white;
+}
+
+.standings_COL .standings_entry_logo {
+    background: url("/static/img/COL_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_COL .standings_entry_logo img {
+    display: none;
+}
+
+.standings_COL:hover .standings_entry_logo {
+    background: url("/static/img/COL_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_DAL {
+    background: linear-gradient(to right, #02A957 0px,
+                                          #005228 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_DAL:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_DAL .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_DAL:hover .standings_data {
+   color: white;
+}
+
+.standings_DAL .standings_entry_logo {
+    background: url("/static/img/DAL_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_DAL .standings_entry_logo img {
+    display: none;
+}
+
+.standings_DAL:hover .standings_entry_logo {
+    background: url("/static/img/DAL_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_DET {
+    background: linear-gradient(to right, #D7033E 0px,
+                                          #A1011D 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_DET:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_DET .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_DET:hover .standings_data {
+   color: white;
+}
+
+.standings_DET .standings_entry_logo {
+    background: url("/static/img/DET_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_DET .standings_entry_logo img {
+    display: none;
+}
+
+.standings_DET:hover .standings_entry_logo {
+    background: url("/static/img/DET_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_EDM {
+    background: linear-gradient(to right, #012B7D 0px,
+                                          #001539 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_EDM:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_EDM .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_EDM:hover .standings_data {
+   color: white;
+}
+
+.standings_EDM .standings_entry_logo {
+    background: url("/static/img/EDM_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_EDM .standings_entry_logo img {
+    display: none;
+}
+
+.standings_EDM:hover .standings_entry_logo {
+    background: url("/static/img/EDM_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_FLA {
+    background: linear-gradient(to right, #D8013E 0px,
+                                          #A1011D 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_FLA:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_FLA .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_FLA:hover .standings_data {
+   color: white;
+}
+
+.standings_FLA .standings_entry_logo {
+    background: url("/static/img/FLA_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-46%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_FLA .standings_entry_logo img {
+    display: none;
+}
+
+.standings_FLA:hover .standings_entry_logo {
+    background: url("/static/img/FLA_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_LAK {
+    background: linear-gradient(to right, #BFC5C7 0px,
+                                          #838F96 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+}
+
+.standings_LAK:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_LAK .standings_entry_logo {
+    background: url("/static/img/LAK_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-49%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_LAK .standings_entry_logo img {
+    display: none;
+}
+
+.standings_LAK:hover .standings_entry_logo {
+    background: url("/static/img/LAK_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_MIN {
+    background: linear-gradient(to right, #155E43 0px,
+                                          #092B20 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_MIN:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_MIN .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_MIN:hover .standings_data {
+   color: white;
+}
+
+.standings_MIN .standings_entry_logo {
+    background: url("/static/img/MIN_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_MIN .standings_entry_logo img {
+    display: none;
+}
+
+.standings_MIN:hover .standings_entry_logo {
+    background: url("/static/img/MIN_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_MTL {
+    background: linear-gradient(to right, #C02241 0px,
+                                          #79101C 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_MTL:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_MTL .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_MTL:hover .standings_data {
+   color: white;
+}
+
+.standings_MTL .standings_entry_logo {
+    background: url("/static/img/MTL_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_MTL .standings_entry_logo img {
+    display: none;
+}
+
+.standings_MTL:hover .standings_entry_logo {
+    background: url("/static/img/MTL_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_NJD {
+    background: linear-gradient(to right, #DB0000 0px,
+                                          #A70000 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white
+}
+
+.standings_NJD:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_NJD .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_NJD:hover .standings_data {
+   color: white;
+}
+
+.standings_NJD .standings_entry_logo {
+    background: url("/static/img/NJD_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_NJD .standings_entry_logo img {
+    display: none;
+}
+
+.standings_NJD:hover .standings_entry_logo {
+    background: url("/static/img/NJD_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_NSH {
+    background: linear-gradient(to right, #F9CD26 0px,
+                                          #E28F11 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: #041E42;
+}
+
+.standings_NSH:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_Nsh .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_NSH:hover .standings_data {
+   color: #041E42;
+}
+
+.standings_NSH .standings_entry_logo {
+    background: url("/static/img/NSH_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_NSH .standings_entry_logo img {
+    display: none;
+}
+
+.standings_NSH:hover .standings_entry_logo {
+    background: url("/static/img/NSH_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_NYI {
+    background: linear-gradient(to right, #015FAD 0px,
+                                          #002C5A 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_NYI:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_NYI .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_NYI:hover .standings_data {
+   color: white;
+}
+
+.standings_NYI .standings_entry_logo {
+    background: url("/static/img/NYI_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_NYI .standings_entry_logo img {
+    display: none;
+}
+
+.standings_NYI:hover .standings_entry_logo {
+    background: url("/static/img/NYI_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_NYR {
+    background: linear-gradient(to right, #1C67B6 0px,
+                                          #0D2E65 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_NYR:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_NYR .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_NYR:hover .standings_data {
+   color: white;
+}
+
+.standings_NYR .standings_entry_logo {
+    background: url("/static/img/NYR_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-49%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_NYR .standings_entry_logo img {
+    display: none;
+}
+
+.standings_NYR:hover .standings_entry_logo {
+    background: url("/static/img/NYR_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_OTT {
+    background: linear-gradient(to right, #D8013D 0px,
+                                          #A2001D 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_OTT:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_OTT .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_OTT:hover .standings_data {
+   color: white;
+}
+
+.standings_OTT .standings_entry_logo {
+    background: url("/static/img/OTT_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_OTT .standings_entry_logo img {
+    display: none;
+}
+
+.standings_OTT:hover .standings_entry_logo {
+    background: url("/static/img/OTT_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_PHI {
+    background: linear-gradient(to right, #DB5F08 0px,
+                                          #9A2804 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_PHI:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_PHI .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_PHI:hover .standings_data {
+   color: white;
+}
+
+.standings_PHI .standings_entry_logo {
+    background: url("/static/img/PHI_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_PHI .standings_entry_logo img {
+    display: none;
+}
+
+.standings_PHI:hover .standings_entry_logo {
+    background: url("/static/img/PHI_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_PIT {
+    background: linear-gradient(to right, #FFCE23 0px,
+                                          #E69112 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+}
+
+.standings_PIT:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_PIT .standings_entry_logo {
+    background: url("/static/img/PIT_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-45%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_PIT .standings_entry_logo img {
+    display: none;
+}
+
+.standings_PIT:hover .standings_entry_logo {
+    background: url("/static/img/PIT_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_SEA {
+    background: linear-gradient(to right, #B6E5E4 0px,
+                                          #65B9BA 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: #041C2C;
+}
+
+.standings_SEA:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_SEA .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_SEA:hover .standings_data {
+   color: #041C2C;
+}
+
+.standings_SEA .standings_entry_logo {
+    background: url("/static/img/SEA_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_SEA .standings_entry_logo img {
+    display: none;
+}
+
+.standings_SEA:hover .standings_entry_logo {
+    background: url("/static/img/SEA_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_SJS {
+    background: linear-gradient(to right, #06899A 0px,
+                                          #013C48 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_SJS:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_SJS .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_SJS:hover .standings_data {
+   color: white;
+}
+
+.standings_SJS .standings_entry_logo {
+    background: url("/static/img/SJS_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-52%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_SJS .standings_entry_logo img {
+    display: none;
+}
+
+.standings_SJS:hover .standings_entry_logo {
+    background: url("/static/img/SJS_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_STL {
+    background: linear-gradient(to right, #009BDE 0px,
+                                          #0048AD 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_STL:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_STL .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_STL:hover .standings_data {
+   color: white;
+}
+
+.standings_STL .standings_entry_logo {
+    background: url("/static/img/STL_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_STL .standings_entry_logo img {
+    display: none;
+}
+
+.standings_STL:hover .standings_entry_logo {
+    background: url("/static/img/STL_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_TBL {
+    background: linear-gradient(to right, #002C7D 0px,
+                                          #001439 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_TBL:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_TBL .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_TBL:hover .standings_data {
+   color: white;
+}
+
+.standings_TBL .standings_entry_logo {
+    background: url("/static/img/TBL_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_TBL .standings_entry_logo img {
+    display: none;
+}
+
+.standings_TBL:hover .standings_entry_logo {
+    background: url("/static/img/TBL_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_TOR {
+    background: linear-gradient(to right, #002C7D 0px,
+                                          #001539 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_TOR:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_TOR .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_TOR:hover .standings_data {
+   color: white;
+}
+
+.standings_TOR .standings_entry_logo {
+    background: url("/static/img/TOR_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-52%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_TOR .standings_entry_logo img {
+    display: none;
+}
+
+.standings_TOR:hover .standings_entry_logo {
+    background: url("/static/img/TOR_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_UTA {
+    background: linear-gradient(to right, #A2CBEC 0px,
+                                          #4D89C4 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_UTA:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_UTA .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_UTA:hover .standings_data {
+   color: white;
+}
+
+.standings_UTA .standings_entry_logo {
+    background: url("/static/img/UTA_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+    transform: translateY(-46%);
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_UTA .standings_entry_logo img {
+    display: none;
+}
+
+.standings_UTA:hover .standings_entry_logo {
+    background: url("/static/img/UTA_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_VAN {
+    background: linear-gradient(to right, #002C7C 0px,
+                                          #001439 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_VAN:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_VAN .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_VAN:hover .standings_data {
+   color: white;
+}
+
+.standings_VAN .standings_entry_logo {
+    background: url("/static/img/VAN_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_VAN .standings_entry_logo img {
+    display: none;
+}
+
+.standings_VAN:hover .standings_entry_logo {
+    background: url("/static/img/VAN_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_VGK {
+    background: linear-gradient(to right, #CEB981 0px,
+                                          #AD7F49 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+}
+
+.standings_VGK:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_VGK .standings_entry_logo {
+    background: url("/static/img/VGK_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_VGK .standings_entry_logo img {
+    display: none;
+}
+
+.standings_VGK:hover .standings_entry_logo {
+    background: url("/static/img/VGK_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_WPG {
+    background: linear-gradient(to right, #062A5C 0px,
+                                          #031329 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_WPG:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_WPG .standings_data {
+    color: black;
+
+    transition: color 0.4s ease-in-out;
+}
+
+.standings_WPG:hover .standings_data {
+   color: white;
+}
+
+.standings_WPG .standings_entry_logo {
+    background: url("/static/img/WPG_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_WPG .standings_entry_logo img {
+    display: none;
+}
+
+.standings_WPG:hover .standings_entry_logo {
+    background: url("/static/img/WPG_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.standings_WSH {
+    background: linear-gradient(to right, #D70343 0px,
+                                          #A2011F 24ch);
+    background-repeat: no-repeat;
+    background-size: 24ch 100%;
+    color: white;
+}
+
+.standings_WSH:hover {
+    background-size: 100% 100%;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.standings_WSH .standings_data {
+   color: black;
+   
+   transition: color 0.4s ease-in-out;
+}
+
+.standings_WSH:hover .standings_data {
+   color: white;
+}
+
+.standings_WSH .standings_entry_logo {
+    background: url("/static/img/WSH_normal.svg") no-repeat center/contain;
+    height: 160px;
+    width: 160px;
+
+    transition: background 0.4s ease-in-out,
+                filter 0.25s ease;
+}
+
+.standings_WSH .standings_entry_logo img {
+    display: none;
+}
+
+.standings_WSH:hover .standings_entry_logo {
+    background: url("/static/img/WSH_mono.svg") no-repeat center/contain;
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.25));
+}

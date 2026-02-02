@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Teams | NHL PH</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='teamspage.css') }}">
+</head>
+
+<body>
+    <h1>Current NHL Teams</h1>
+    <div class = "teams_list">
+        {% for team in teams %}
+            <div class = "teams_entry teams_{{ team["abbr"] }}">
+                {{ team["name"] }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="/">Back to Home</a>
+</body>
+
+</html>

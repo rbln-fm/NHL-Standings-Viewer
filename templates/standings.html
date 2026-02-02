@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table | NHL PH</title>
+    <link rel = "stylesheet" href="{{ url_for("static", filename = "standingspage.css") }}">
+</head>
+
+<body>
+    <div class = "standings_content">
+        <nav class = "navbar">
+            <img class = "navbar_logo" src = "{{ url_for("static", filename = "img/NHL_mono.svg") }}">
+
+            <ul>
+                <li><a href = "{{ url_for("standings", category = "division") }}" 
+                       class = "{% if category == 'division' %}active{% endif %} navbar_division">Division</a></li>
+                <li><a href = "{{ url_for("standings", category = "conference") }}"
+                       class = "{% if category == 'conference' %}active{% endif %} navbar_conference">Conference</a></li>
+                <li><a href="{{ url_for("standings", category = "league") }}"
+                       class = "{% if category == 'league' %}active{% endif %} navbar_league">League</a></li>
+            </ul>
+        </nav>
+
+        <div class = "standings_list">
+            {% if category == "league" %}
+                {% for team in standings["standings"] %}
+                    <!-- <pre>{{ team | tojson(indent=2) }}</pre> -->
+
+                    <div class = "standings_entry standings_{{ team["teamAbbrev"]["default"] }}">
+                        <div class = "standings_entry_left">
+                            <span class = "standings_number">{{ loop.index }}</span>
+                            <span class = "standings_entry_name">{{ team["teamName"]["default"] }}</span>
+                        </div>
+
+                        <div class="standings_entry_logo">
+                            <img class = "standings_entry_logo" src = "{{ team["teamLogo"] }}">
+                        </div>
+                                    
+                        <div class = "standings_data">
+                            <span class = "standings_data_left">{{ team["gamesPlayed"] }}</span>
+                            <span class = "standings_data_left">{{ team["wins"] }}</span>
+                            <span class = "standings_data_left">{{ team["losses"] }}</span>
+                            <span class = "standings_data_left">{{ team["otLosses"] }}</span>
+                            <span class = "standings_data_left">{{ "%.3f"|format(team["pointPctg"]) }}</span>
+                            <span class = "standings_data_right">{{ team["points"] }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            {% elif category == "division" %}
+                {% for division, teams in divisions.items() %}
+                    <div class = "division_name"> {{ division }} </div>
+
+                    {% for team in teams %}
+                        <div class = "standings_entry standings_{{ team["teamAbbrev"]["default"] }}">
+                            <div class = "standings_entry_left">
+                                <span class = "standings_number">{{ loop.index }}</span>
+                                <span class = "standings_entry_name">{{ team["teamName"]["default"] }}</span>
+                            </div>
+
+                            <div class="standings_entry_logo">
+                                <img class = "standings_entry_logo" src = "{{ team["teamLogo"] }}">
+                            </div>
+                                        
+                            <div class = "standings_data">
+                                <span class = "standings_data_left">{{ team["gamesPlayed"] }}</span>
+                                <span class = "standings_data_left">{{ team["wins"] }}</span>
+                                <span class = "standings_data_left">{{ team["losses"] }}</span>
+                                <span class = "standings_data_left">{{ team["otLosses"] }}</span>
+                                <span class = "standings_data_left">{{ "%.3f"|format(team["pointPctg"]) }}</span>
+                                <span class = "standings_data_right">{{ team["points"] }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+            {% else %}
+                {% for conference, teams in conferences.items() %}
+                    <div class = "conference_name"> {{ conference }} </div>
+
+                    {% for team in teams %}
+                        <div class = "standings_entry standings_{{ team["teamAbbrev"]["default"] }}">
+                            <div class = "standings_entry_left">
+                                <span class = "standings_number">{{ loop.index }}</span>
+                                <span class = "standings_entry_name">{{ team["teamName"]["default"] }}</span>
+                            </div>
+
+                            <div class="standings_entry_logo">
+                                <img class = "standings_entry_logo" src = "{{ team["teamLogo"] }}">
+                            </div>
+                                        
+                            <div class = "standings_data">
+                                <span class = "standings_data_left">{{ team["gamesPlayed"] }}</span>
+                                <span class = "standings_data_left">{{ team["wins"] }}</span>
+                                <span class = "standings_data_left">{{ team["losses"] }}</span>
+                                <span class = "standings_data_left">{{ team["otLosses"] }}</span>
+                                <span class = "standings_data_left">{{ "%.3f"|format(team["pointPctg"]) }}</span>
+                                <span class = "standings_data_right">{{ team["points"] }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+            {% endif %}
+        </div>
+    </div>
+
+    <a href="/">Back to Home</a>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+/* Info: _______________________________________________________________________ */
+
+.teams_entry {
+    border: transparent;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    font-family: "Wix Madefor Text", sans-serif;
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: bold;
+    margin: 15px auto;
+    max-width: 750px;
+    padding: 18px 18px 18px 20px;
+
+    transition: background-color 0.25s ease,
+                box-shadow 0.25s ease, 
+                color 0.25s ease;
+}
+
+.teams_entry:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
