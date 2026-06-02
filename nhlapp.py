@@ -11,8 +11,9 @@ def home():
 @app.route("/teams")
 def teams():
     teams = client.teams.teams()
+    teams.sort(key=lambda t: t["name"])
     
-    return render_template("teams.html", teams=teams)
+    return render_template("teams.html", teams = teams)
 
 @app.route("/standings/<category>")
 def standings(category):

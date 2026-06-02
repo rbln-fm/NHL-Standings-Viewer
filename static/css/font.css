@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Akt:wght@100..900&display=swap');
+
+@layer theme {
+    :root {
+        --default-font-family: "Akt", sans-serif;
+    }
+}
+
+@layer base {
+    body {
+        font-family: var(--default-font-family);
+    }
+}
