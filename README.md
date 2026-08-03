@@ -17,5 +17,5 @@ Mainly to add to **my portfolio** (a class requirement) [here](https://cmsc100-l
 **Run `pip install -r requirements.txt`** on your terminal, and then **run `python3 nhlapp.py`**.
 
 ## When was this last updated and what was changed?
-This repository was last updated on **2 June 2026**, with the following commit message:\
-**`ui: added header and logo, done Teams page | feat: added Tailwind | refactor: renamed app`**.
+This repository was last updated on **3 August 2026**, with the following commit message:\
+**`chore: added players in team pages (alongside other changes)`**.
