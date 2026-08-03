@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/rbln-fm/NHL-Standings-Viewer#readme",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.0",
-    "tailwindcss": "^4.3.0",
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3",
     "tailwindcss-pattern": "^0.1.0"
   }
 }

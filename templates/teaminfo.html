@@ -1,0 +1,30 @@
+{% extends "components/header.html" %}
+{% block title %}{{ team["name"] }} | OddManRush{% endblock %}
+
+{% block content %}
+    <div class = "text-gray-800">
+        <!-- Header -->
+        <div class = "mb-6 relative">
+            <img class = "h-65 object-cover w-full md:h-60" src = "../static/img/team_info_cover.jpg" alt = "Teams Header Div Photo">
+            <div class = "absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+            <p class = "absolute bg-white bg-clip-text bottom-10 left-1/2 text-6xl font-extrabold 
+                        pattern-diagonal-stripes-md text-transparent -translate-x-1/2 md:left-10 md:translate-x-0 [background-blend-mode:multiply]">
+                {{ team["common_name"] }}
+            </p>
+        </div>
+
+        <!-- PLayer Cards -->
+        <div>
+            {% for category in roster %}
+                <h2>{{ category|capitalize }}</h2>
+
+                {% for player in roster[category] %}
+                    <div>
+                        <img src = "https://assets.nhle.com/mugs/nhl/{{ season }}/{{ abbr|upper }}/{{ player["id"] }}.png" alt = "{{ player["firstName.default"] }} {{ player["lastName.default"] }}"> 
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

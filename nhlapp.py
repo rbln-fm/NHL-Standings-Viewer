@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from nhlpy import NHLClient
+from datetime import date
 
 app = Flask(__name__)
 client = NHLClient()
@@ -14,6 +15,31 @@ def teams():
     teams.sort(key=lambda t: t["name"])
     
     return render_template("teams.html", teams = teams)
+
+@app.route("/teams/<abbr>")
+def teams_info(abbr):
+    teams = client.teams.teams()
+    team = None
+    roster = None
+    current_season = None
+    current_month = date.today().month
+
+    if current_month >= 9:
+        current_season = f"{date.today().year}{date.today().year + 1}"
+    else:
+        current_season = f"{date.today().year - 1}{date.today().year}"
+
+    for team in teams:
+        if team['abbr'].lower() == abbr:
+            team = team
+            roster = client.teams.team_roster(team_abbr = abbr, season = current_season)
+            break
+    
+    return render_template("teaminfo.html", 
+                           abbr = abbr,
+                           team = team, 
+                           roster = roster, 
+                           season = current_season)
 
 @app.route("/standings/<category>")
 def standings(category):

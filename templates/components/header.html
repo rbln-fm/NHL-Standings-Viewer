@@ -4,25 +4,26 @@
     <head>
         <link rel = "stylesheet" href = "{{ url_for('static', filename='css/output.css') }}">
         <link rel = "stylesheet" href = "{{ url_for('static', filename='css/font.css') }}">
+        <link rel = "stylesheet" href = "{{ url_for('static', filename='css/animation.css') }}">
         <title>{% block title %}OddManRush{% endblock %}</title>
     </head>
 
     <body class = "pattern-grid-lg [--tw-pattern-color:#DBDBDB]">
-        <div class = "fixed backdrop-blur-xs bg-white/60 flex flex-col justify-between left-0 m-6 p-4 
+        <div class = "fixed backdrop-blur-xs bg-white/60 flex flex-col justify-between left-0 m-6 p-4
                       right-0 rounded-2xl shadow-md text-gray-800 top-0 z-10 transition-all hover:bg-slate-100/60
                       md:flex-row md:p-5">
             <div class = "flex self-center md:items-center md:justify-items-center">
                 <a href = "/">
-                    <img class = "drop-shadow-lg h-11 -mb-1 w-auto md:-mb-3" src = "../../static/img/OMR_logo.svg" alt = "OddManRush logo">
+                    <img class = "drop-shadow-lg h-11 mt-1 w-auto md:-mb-3 md:mt-0" src = "../../static/img/OMR_logo.svg" alt = "OddManRush logo">
                 </a>
             </div>
 
-            <div class = "flex gap-6 self-center justify-items-between mr-2 md:gap-10 md:items-center">
-                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 md:text-xl">Games</a>
-                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 md:text-xl" href = "/teams">Teams</a>
-                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 md:text-xl">Players</a>
-                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 md:text-xl" href = "/standings/league">Standings</a>
-                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 md:text-xl">Stats</a>
+            <div class="flex gap-5 mr-0 self-center md:gap-10 md:items-center md:mr-2">
+                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 sm:text-xl">Games</a>
+                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 sm:text-xl" href = "/teams">Teams</a>
+                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 sm:text-xl">Players</a>
+                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 sm:text-xl" href = "/standings/league">Standings</a>
+                <a class = "font-extrabold text-lg transition-all hover:text-gray-100 sm:text-xl">Stats</a>
             </div>
         </div>
 
