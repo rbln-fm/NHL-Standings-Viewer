@@ -8,27 +8,27 @@
             <img class = "h-65 object-cover w-full md:h-60" src = "../static/img/team_cover.jpg" alt = "Teams Header Div Photo">
             <div class = "absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
-            <p class = "absolute bg-white bg-clip-text bottom-10 left-1/2 text-6xl font-extrabold 
-                        pattern-diagonal-stripes-md text-transparent -translate-x-1/2 md:left-10 md:translate-x-0 [background-blend-mode:multiply]">
+            <p class = "absolute bottom-10 font-extrabold left-1/2 text-6xl text-white -translate-x-1/2 md:left-10 md:translate-x-0">
                 Teams
             </p>
         </div>
 
         <!-- Team Cards -->
-        <div class = "fade-in flex flex-col gap-3 items-center justify-items-center p-6 md:grid md:grid-cols-2 md:gap-y-4">
+        <div class = "fade-in flex flex-col gap-3 items-center justify-items-center p-6 md:grid md:grid-cols-2 md:gap-y-6" 
+             onanimationend = "this.classList.remove('fade-in')">
             {% for team in teams %}
-                <div class = "backdrop-blur-xs bg-white/33 cursor-pointer flex items-center justify-between overflow-hidden p-6 
-                              r-3 relative rounded-lg shadow-md transition-all w-11/12 hover:bg-slate-100/40 hover:-translate-y-1 active:bg-slate-200/40"
-                     onclick = "window.location.href = '/teams/{{ team["abbr"]|lower }}'">
+                <div class = "backdrop-blur-[1px] bg-white/[0.33] cursor-pointer flex items-center justify-between overflow-hidden p-6 
+                              relative rounded-lg shadow-md transition-all w-11/12 hover:bg-slate-200/40 hover:-translate-y-1 active:bg-slate-200/40"
+                     onclick = "window.location.href = '/teams/{{ team.abbr|lower }}'">
                     <div class = "flex flex-col">
                         <p class = "font-bold text-lg sm:text-xl">{{ team["name"] }}</p>
                         <p class = "font-semibold text-base">{{ team["abbr"] }}</p>
                     </div>
                     
                     {% if team["abbr"] == "PIT" %}
-                        <img class = "absolute drop-shadow-lg h-42 -right-10 -top-5 w-auto md:h-18 md:-right-0 md:top-2.5" src = "{{ team["logo"] }}" alt = "{{ team["name"] }}">
+                        <img class = "absolute drop-shadow-lg h-42 -right-10 -top-5 w-auto md:h-18 md:-right-0 md:top-2.5" src = "{{ team['logo'] }}" alt = "{{ team['name'] }}">
                     {% else %}
-                        <img class = "absolute drop-shadow-lg h-42 -right-10 w-auto md:h-18 md:-right-0" src = "{{ team["logo"] }}" alt = "{{ team["name"] }}">
+                        <img class = "absolute drop-shadow-lg h-42 -right-10 w-auto md:h-18 md:-right-0" src = "{{ team['logo'] }}" alt = "{{ team['name'] }}">
                     {% endif %}
                 </div>
             {% endfor %}

@@ -1,4 +1,1 @@
 @import "tailwindcss";
-@plugin "tailwindcss-pattern";
-@import "../css/font.css";
-@source "../../templates";

@@ -8,22 +8,38 @@
             <img class = "h-65 object-cover w-full md:h-60" src = "../static/img/team_info_cover.jpg" alt = "Teams Header Div Photo">
             <div class = "absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
-            <p class = "absolute bg-white bg-clip-text bottom-10 left-1/2 text-6xl font-extrabold 
-                        pattern-diagonal-stripes-md text-transparent -translate-x-1/2 md:left-10 md:translate-x-0 [background-blend-mode:multiply]">
-                {{ team["common_name"] }}
+            <p class = "absolute bottom-10 font-extrabold left-1/2 text-6xl text-white -translate-x-1/2 md:left-10 md:translate-x-0">
+                {{ team["name"] }}
             </p>
         </div>
 
-        <!-- PLayer Cards -->
-        <div>
-            {% for category in roster %}
-                <h2>{{ category|capitalize }}</h2>
+        <!-- Player Cards -->
+        <div class = "flex flex-col gap-6">
+            <h1 class = "font-extrabold text-3xl">Roster</h1>
 
-                {% for player in roster[category] %}
-                    <div>
-                        <img src = "https://assets.nhle.com/mugs/nhl/{{ season }}/{{ abbr|upper }}/{{ player["id"] }}.png" alt = "{{ player["firstName.default"] }} {{ player["lastName.default"] }}"> 
+            {% for category in roster %}
+                <div class = "backdrop-blur-[1px] bg-white/[0.33] fade-in flex flex-col gap-2 p-6 relative rounded-lg self-center
+                              shadow-md transition-all w-11/12 hover:bg-slate-200/40 active:bg-slate-200/40"
+                     onanimationend = "this.classList.remove('fade-in')">
+                    <div class = "flex flex-col gap-1">
+                        <h2 class = "font-bold text-2xl">{{ category|capitalize }}</h2>
+
+                        <div class = "gap-10 gap-y-1 grid justify-center [grid-template-columns:repeat(auto-fill,9rem)]">
+                            {% for player in roster[category] %}
+                                <div class = "flex flex-col gap-2 items-center text-center w-32">
+                                    <div class = "flex">
+                                        <img class = "drop-shadow-lg h-auto w-32" src = "https://assets.nhle.com/mugs/nhl/{{ season }}/{{ abbr|upper }}/{{ player['id'] }}.png" alt = "{{ player['firstName.default'] }} {{ player['lastName.default'] }}"> 
+                                    </div>
+
+                                    <div class = "flex flex-col items-center w-full">
+                                        <h4 class = "font-bold leading-tight text-lg w-full">{{ player["firstName"]["default"] }} {{ player["lastName"]["default"] }}</h4>
+                                        <h4 class = "text-sm">{{ player["sweaterNumber"] }} | {{ player["birthCountry"] }}</h4>
+                                    </div>
+                                </div>
+                            {% endfor %}    
+                        </div>
                     </div>
-                {% endfor %}
+                </div>
             {% endfor %}
         </div>
     </div>
