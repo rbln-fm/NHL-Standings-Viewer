@@ -18,4 +18,4 @@ Mainly to add to **my portfolio** (a class requirement) [here](https://cmsc100-l
 
 ## When was this last updated and what was changed?
 This repository was last updated on **20 August 2026**, with the following commit message:\
-**`chore: Tailwind reinitialization | ui: team list page and team rosters (initial), backdrop blur fix`**.
+**`ui: updated previous and next game cards on team pages, font change`**.

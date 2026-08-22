@@ -14,20 +14,25 @@
         </div>
 
         <!-- Games -->
-        <div class = "flex">
+        <div class = "flex flex-col gap-6 justify-self-center mb-6 w-11/12">
+            <div class = "flex justify-between items-center">
+                <h1 class = "font-extrabold w-[15%] text-3xl">What's Up?</h1>
+                <hr class = "bg-slate-200 border-0 h-1 rounded-sm w-[85%]">
+            </div>
 
-            <!-- Previous Game -->
-            <div class = "flex flex-col w-[50%]">
-                <h1 class = "flex font-extrabold justify-center text-3xl">Previous Game</h1>
+            <div class = "flex flex-row gap-8">
+                <!-- Previous Game -->
+                <div class = "flex w-full">
+                    <div class = "backdrop-blur-[1px] bg-white/[0.33] fade-in flex flex-col gap-3 p-6 relative rounded-lg self-center
+                                  shadow-md transition-all w-full hover:bg-slate-200/40 active:bg-slate-200/40"
+                        onanimationend = "this.classList.remove('fade-in')">
+                        <h2 class = "font-bold text-2xl">Previous Game</h2>
 
-                <div class = "backdrop-blur-[1px] bg-white/[0.33] fade-in flex relative rounded-lg self-center
-                              shadow-md transition-all w-[600px] hover:bg-slate-200/40 active:bg-slate-200/40"
-                     onanimationend = "this.classList.remove('fade-in')">
-                    {% set data = namespace(found = 0) %}
+                        {% set data = namespace(found = 0) %}
 
-                    {% for game in schedule['games']|reverse %}
-                        {% if game['gameDate'] < today %}
-                                <div class = "flex flex-col">
+                        {% for game in schedule['games']|reverse %}
+                            {% if game['gameDate'] < today %}
+                                <div class = "flex flex-col gap-3 w-full">
                                     <!-- Away Team Info -->
                                     <div class = "flex flex-row items-center justify-between">
                                         <div class = "flex items-center">
@@ -35,8 +40,8 @@
                                             <p class = "font-bold text-2xl">{{ game['awayTeam']['commonName']['default'] }}</p>
                                         </div>
                                         
-                                        <div>
-                                            <p class = "font-extrabold text-2xl">{{ game['awayTeam']['score'] }}</p>
+                                        <div class = "mr-4">
+                                            <p class = "font-extrabold text-3xl">{{ game['awayTeam']['score'] }}</p>
                                         </div>
                                     </div>
 
@@ -47,176 +52,191 @@
                                             <p class = "font-bold text-2xl">{{ game['homeTeam']['commonName']['default'] }}</p>
                                         </div>
 
-                                        <div class = "flex">
-                                            <p class = "font-extrabold text-2xl">{{ game['homeTeam']['score'] }}</p>
+                                        <div class = "mr-4">
+                                            <p class = "font-extrabold text-3xl">{{ game['homeTeam']['score'] }}</p>
                                         </div>
                                     </div>
 
                                     <!-- Reg/OT, Venue, and Date -->
                                     <div class = "flex flex-row justify-between">
+                                        <div>
+                                            {% if game['gameOutcome']['lastPeriodType'] == "REG" %}
+                                                <p class = "font-bold text-lg">Regulation</p>
+                                            {% else %}
+                                                <p class = "font-bold text-lg">Overtime</p>
+                                            {% endif %}
+                                        </div>
+
                                         <div class = "flex flex-col">
                                             <div>
-                                                {{ game['gameOutcome']['lastPeriodType'] }}
+                                                <p class = "font-bold text-lg">{{ game['gameDate'] }}</p>   
                                             </div>
                                             <div>
                                                 {{ game['venue']['default'] }}
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+
+                                {% set data.found = 1 %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if data.found == 0 %}
+                            <div class = "flex flex-col gap-3 w-full">
+                                <!-- Away Team Info -->
+                                <div class = "flex flex-row items-center justify-between">
+                                    <div class = "flex items-center">
+                                        <img class = "h-18 w-auto" src = "{{ (prev_schedule['games']|last)['awayTeam']['logo'] }}" alt = "{{ (prev_schedule['games']|last)['awayTeam']['commonName']['default'] }}">
+                                        <p class = "font-bold text-2xl">{{ (prev_schedule['games']|last)['awayTeam']['commonName']['default'] }}</p>
+                                    </div>
+                                    
+                                    <div class = "mr-4">
+                                        <p class = "font-extrabold text-3xl">{{ (prev_schedule['games']|last)['awayTeam']['score'] }}</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Home Team Info -->
+                                <div class = "flex flex-row items-center justify-between">
+                                    <div class = "flex items-center">
+                                        <img class = "h-18 w-auto" src = "{{ (prev_schedule['games']|last)['homeTeam']['logo'] }}" alt = "{{ (prev_schedule['games']|last)['homeTeam']['commonName']['default'] }}">
+                                        <p class = "font-bold text-2xl">{{ (prev_schedule['games']|last)['homeTeam']['commonName']['default'] }}</p>
+                                    </div>
+                                    
+                                    <div class = "mr-4">
+                                        <p class = "font-extrabold text-3xl">{{ (prev_schedule['games']|last)['homeTeam']['score'] }}</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Reg/OT, Venue, and Date -->
+                                <div class = "flex flex-row justify-between">
+                                    <div class = "flex flex-col">
+                                        <div>
+                                            {% if (prev_schedule['games']|last)['gameOutcome']['lastPeriodType'] == "REG" %}
+                                                <p class = "font-bold text-lg">Regulation</p>
+                                            {% else %}
+                                                <p class = "font-bold text-lg">Overtime</p>
+                                            {% endif %}
+                                        </div>
 
                                         <div>
-                                            <p class = "font-bold text-lg">{{ game['gameDate'] }}</p>
+                                            <p class = "font-bold text-lg">{{ (prev_schedule['games']|last)['gameDate'] }}</p>
+                                        </div>
+                                        <div>
+                                            {{ (prev_schedule['games']|last)['venue']['default'] }}
                                         </div>
                                     </div>
                                 </div>
-
-                            {% set data.found = 1 %}
-                            {% break %}
+                            </div>
                         {% endif %}
-                    {% endfor %}
-
-                    {% if data.found == 0 %}
-                        <div class = "flex flex-col">
-                            <!-- Away Team Info -->
-                            <div class = "flex flex-row items-center justify-between">
-                                <div class = "flex items-center">
-                                    <img class = "h-18 w-auto" src = "{{ (prev_schedule['games']|last)['awayTeam']['logo'] }}" alt = "{{ (prev_schedule['games']|last)['awayTeam']['commonName']['default'] }}">
-                                    <p class = "font-bold text-2xl">{{ (prev_schedule['games']|last)['awayTeam']['commonName']['default'] }}</p>
-                                </div>
-                                
-                                <div>
-                                    <p class = "font-extrabold text-2xl">{{ (prev_schedule['games']|last)['awayTeam']['score'] }}</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Home Team Info -->
-                            <div class = "flex flex-row items-center justify-between">
-                                <div class = "flex items-center">
-                                    <img class = "h-18 w-auto" src = "{{ (prev_schedule['games']|last)['homeTeam']['logo'] }}" alt = "{{ (prev_schedule['games']|last)['homeTeam']['commonName']['default'] }}">
-                                    <p class = "font-bold text-2xl">{{ (prev_schedule['games']|last)['homeTeam']['commonName']['default'] }}</p>
-                                </div>
-                                
-                                <div>
-                                    <p class = "font-extrabold text-2xl">{{ (prev_schedule['games']|last)['homeTeam']['score'] }}</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Reg/OT, Venue, and Date -->
-                            <div class = "flex flex-row justify-between">
-                                <div class = "flex flex-col">
-                                    <div>
-                                        {{ (prev_schedule['games']|last)['gameOutcome']['lastPeriodType'] }}
-                                    </div>
-                                    <div>
-                                        {{ (prev_schedule['games']|last)['venue']['default'] }}
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <p class = "font-bold text-lg">{{ (prev_schedule['games']|last)['gameDate'] }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
+                    </div>
                 </div>
-            </div>
 
-            <!-- Next Game -->
-            <div class = "flex flex-col w-[50%]">
-                <h1 class = "flex font-extrabold justify-center text-3xl">Next Game</h1>
+                <!-- Next Game -->
+                <div class = "flex w-full">
+                    <div class = "backdrop-blur-[1px] bg-white/[0.33] fade-in flex flex-col gap-3 h-full p-6 relative rounded-lg self-center
+                                shadow-md transition-all w-full hover:bg-slate-200/40 active:bg-slate-200/40"
+                        onanimationend = "this.classList.remove('fade-in')">
 
-                <div class = "backdrop-blur-[1px] bg-white/[0.33] fade-in flex relative rounded-lg self-center
-                              shadow-md transition-all hover:bg-slate-200/40 active:bg-slate-200/40"
-                     onanimationend = "this.classList.remove('fade-in')">
-                    {% set data = namespace(found = 0) %}
+                        <h2 class = "font-bold text-2xl">Next Game</h2>
 
-                    {% for game in schedule['games'] %}
-                        {% if game['gameDate'] > today %}
-                                <div class = "flex flex-col">
-                                    <!-- Away Team Info -->
-                                    <div class = "flex flex-row items-center">
-                                        <img class = "h-18 w-auto" src = "{{ game['awayTeam']['logo'] }}" alt = "{{ game['awayTeam']['commonName']['default'] }}">
-                                        <p class = "font-bold text-2xl">{{ game['awayTeam']['commonName']['default'] }}</p>
-                                    </div>
+                        {% set data = namespace(found = 0) %}
 
-                                    <!-- Home Team Info -->
-                                    <div class = "flex flex-row items-center">
-                                        <img class = "h-18 w-auto" src = "{{ game['homeTeam']['logo'] }}" alt = "{{ game['homeTeam']['commonName']['default'] }}">
-                                        <p class = "font-bold text-2xl">{{ game['homeTeam']['commonName']['default'] }}</p>
-                                    </div>
-
-                                    <!-- Venue and Date -->
-                                    <div class = "flex flex-row justify-between">
-                                        <div>
-                                            {{ game['venue']['default'] }}
+                        {% for game in schedule['games'] %}
+                            {% if game['gameDate'] > today %}
+                                    <div class = "flex flex-col gap-3 w-full">
+                                        <!-- Away Team Info -->
+                                        <div class = "flex flex-row items-center">
+                                            <img class = "h-18 w-auto" src = "{{ game['awayTeam']['logo'] }}" alt = "{{ game['awayTeam']['commonName']['default'] }}">
+                                            <p class = "font-bold text-2xl">{{ game['awayTeam']['commonName']['default'] }}</p>
                                         </div>
-                                        <div>
-                                            <p class = "font-bold text-lg">{{ game['gameDate'] }}</p>
+
+                                        <!-- Home Team Info -->
+                                        <div class = "flex flex-row items-center">
+                                            <img class = "h-18 w-auto" src = "{{ game['homeTeam']['logo'] }}" alt = "{{ game['homeTeam']['commonName']['default'] }}">
+                                            <p class = "font-bold text-2xl">{{ game['homeTeam']['commonName']['default'] }}</p>
+                                        </div>
+
+                                        <!-- Venue and Date -->
+                                        <div class = "flex flex-col items-end">
+                                            <div>
+                                                <p class = "font-bold text-lg">{{ game['gameDate'] }}</p>
+                                            </div>
+                                            <div>
+                                                {{ game['venue']['default'] }}
+                                            </div>
                                         </div>
                                     </div>
+
+                                {% set data.found = 1 %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if data.found == 0 %}
+                            <div class = "flex flex-col gap-3 w-full">
+                                <!-- Away Team Info -->
+                                <div class = "flex flex-row items-center">
+                                    <img class = "h-18 w-auto" src = "{{ next_schedule['games'][0]['awayTeam']['logo'] }}" alt = "{{ next_schedule['games'][0]['awayTeam']['commonName']['default'] }}">
+                                    <p class = "font-bold text-2xl">{{ next_schedule['games'][0]['awayTeam']['commonName']['default'] }}</p>
                                 </div>
 
-                            {% set data.found = 1 %}
-                            {% break %}
+                                <!-- Home Team Info -->
+                                <div class = "flex flex-row items-center">
+                                    <img class = "h-18 w-auto" src = "{{ next_schedule['games'][0]['homeTeam']['logo'] }}" alt = "{{ next_schedule['games'][0]['homeTeam']['commonName']['default'] }}">
+                                    <p class = "font-bold text-2xl">{{ next_schedule['games'][0]['homeTeam']['commonName']['default'] }}</p>
+                                </div>
+
+                                <!-- Venue and Date -->
+                                <div class = "flex flex-col items-end">
+                                    <div>
+                                        <p class = "font-bold text-lg">{{ next_schedule['games'][0]['gameDate'] }}</p>
+                                    </div>
+                                    <div>
+                                        {{ next_schedule['games'][0]['venue']['default'] }}
+                                    </div>
+                                </div>
+                            </div>
                         {% endif %}
-                    {% endfor %}
-
-                    {% if data.found == 0 %}
-                        <div class = "flex flex-col">
-                            <!-- Away Team Info -->
-                            <div class = "flex flex-row items-center">
-                                <img class = "h-18 w-auto" src = "{{ next_schedule['games'][0]['awayTeam']['logo'] }}" alt = "{{ next_schedule['games'][0]['awayTeam']['commonName']['default'] }}">
-                                <p class = "font-bold text-2xl">{{ next_schedule['games'][0]['awayTeam']['commonName']['default'] }}</p>
-                            </div>
-
-                            <!-- Home Team Info -->
-                            <div class = "flex flex-row items-center">
-                                <img class = "h-18 w-auto" src = "{{ next_schedule['games'][0]['homeTeam']['logo'] }}" alt = "{{ next_schedule['games'][0]['homeTeam']['commonName']['default'] }}">
-                                <p class = "font-bold text-2xl">{{ next_schedule['games'][0]['homeTeam']['commonName']['default'] }}</p>
-                            </div>
-
-                            <!-- Venue and Date -->
-                            <div class = "flex flex-row justify-between">
-                                <div>
-                                    {{ next_schedule['games'][0]['venue']['default'] }}
-                                </div>
-                                <div>
-                                    <p class = "font-bold text-lg">{{ next_schedule['games'][0]['gameDate'] }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Player Cards -->
-        <div class = "flex flex-col gap-6">
-            <h1 class = "flex font-extrabold justify-center text-3xl">Roster</h1>
+        <div class = "flex flex-col gap-6 justify-self-center mb-6 w-11/12">
+            <div class = "flex justify-between items-center">
+                <h1 class = "font-extrabold w-[9.5%] text-3xl">Roster</h1>
+                <hr class = "bg-slate-200 border-0 h-1 rounded-sm w-[90.5%]">
+            </div>
 
-            {% for category in roster %}
-                <div class = "backdrop-blur-[1px] bg-white/[0.33] fade-in flex flex-col gap-2 p-6 relative rounded-lg self-center
-                              shadow-md transition-all w-11/12 hover:bg-slate-200/40 active:bg-slate-200/40"
-                     onanimationend = "this.classList.remove('fade-in')">
-                    <div class = "flex flex-col gap-1">
-                        <h2 class = "font-bold text-2xl">{{ category|capitalize }}</h2>
+            <div class = "flex flex-col gap-8">
+                {% for category in roster %}
+                    <div class = "backdrop-blur-[1px] bg-white/[0.33] fade-in flex flex-col gap-2 p-6 relative rounded-lg self-center
+                                  shadow-md transition-all w-full hover:bg-slate-200/40 active:bg-slate-200/40"
+                         onanimationend = "this.classList.remove('fade-in')">
+                        <div class = "flex flex-col gap-1">
+                            <h2 class = "font-bold text-2xl">{{ category|capitalize }}</h2>
 
-                        <div class = "gap-10 gap-y-1 grid justify-center [grid-template-columns:repeat(auto-fill,9rem)]">
-                            {% for player in roster[category] %}
-                                <div class = "flex flex-col gap-2 items-center text-center w-32">
-                                    <div class = "flex">
-                                        <img class = "drop-shadow-lg h-auto w-32" src = "https://assets.nhle.com/mugs/nhl/{{ season }}/{{ abbr|upper }}/{{ player['id'] }}.png" alt = "{{ player['firstName.default'] }} {{ player['lastName.default'] }}"> 
+                            <div class = "gap-10 gap-y-1 grid justify-center [grid-template-columns:repeat(auto-fill,9rem)]">
+                                {% for player in roster[category] %}
+                                    <div class = "flex flex-col gap-2 items-center text-center w-32">
+                                        <div class = "flex">
+                                            <img class = "drop-shadow-lg h-auto w-32" src = "https://assets.nhle.com/mugs/nhl/{{ season }}/{{ abbr|upper }}/{{ player['id'] }}.png" alt = "{{ player['firstName.default'] }} {{ player['lastName.default'] }}"> 
+                                        </div>
+
+                                        <div class = "flex flex-col items-center w-full">
+                                            <h4 class = "font-bold leading-tight text-lg w-full">{{ player["firstName"]["default"] }} {{ player["lastName"]["default"] }}</h4>
+                                            <h4 class = "text-sm">{{ player["sweaterNumber"] }} | {{ player["birthCountry"] }}</h4>
+                                        </div>
                                     </div>
-
-                                    <div class = "flex flex-col items-center w-full">
-                                        <h4 class = "font-bold leading-tight text-lg w-full">{{ player["firstName"]["default"] }} {{ player["lastName"]["default"] }}</h4>
-                                        <h4 class = "text-sm">{{ player["sweaterNumber"] }} | {{ player["birthCountry"] }}</h4>
-                                    </div>
-                                </div>
-                            {% endfor %}    
+                                {% endfor %}    
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
