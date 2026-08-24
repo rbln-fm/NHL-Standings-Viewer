@@ -17,5 +17,5 @@ Mainly to add to **my portfolio** (a class requirement) [here](https://cmsc100-l
 **Run `pip install -r requirements.txt`** on your terminal, and then **run `python3 nhlapp.py`**.
 
 ## When was this last updated and what was changed?
-This repository was last updated on **22 August 2026**, with the following (non-README) commit message:\
-**`ui: updated previous and next game cards on team pages, font change`**.
+This repository was last updated on **25 August 2026**, with the following (non-README) commit message:\
+**`chore: added team stats on team info page | ui: for team stats`**.

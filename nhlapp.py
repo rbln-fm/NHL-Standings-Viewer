@@ -25,6 +25,7 @@ def teams_info(abbr):
     current_season = None
     current_date = str(date.today())
     current_month = date.today().month
+    standings = client.standings.league_standings()
 
     if current_month >= 9:
         current_season = f"{date.today().year}{date.today().year + 1}"
@@ -53,7 +54,8 @@ def teams_info(abbr):
                            today = current_date,
                            schedule = full_schedule,
                            prev_schedule = prev_season_schedule,
-                           next_schedule = next_season_schedule)
+                           next_schedule = next_season_schedule,
+                           standings = standings)
 
 @app.route("/standings/<category>")
 def standings(category):
